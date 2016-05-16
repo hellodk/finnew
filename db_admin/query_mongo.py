@@ -15,12 +15,22 @@ def get_db_connection(database_name, host, port):
     return client[database_name]
 
 
-def insert_data(data, database_name, collection_name):
+def insert_data(data):
     '''
     Inserts a given data into the collection
     '''
     db = get_db_connection(database_name, host, port)
     db[collection_name].insert(data)
+    print "Data inserted"
 
 
-
+def get_menu():
+    '''
+    Scans through mongo db and returns back
+    menu to the caller
+    '''
+    db = get_db_connection(database_name, host, port)
+    cursor = db[collection_name].find()
+    for values in cursor:
+        print "Menu : ", values
+    return values

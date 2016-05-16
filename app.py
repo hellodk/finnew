@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-import db_admin
+from db_admin import query_mongo as db
 app = Flask(__name__)
 
 
@@ -26,7 +26,7 @@ def login():
 @app.route('/menu', methods=['GET', 'POST'])
 def show_menu():
     error = None
-    data = db_admin.get_menu()
+    data = db.get_menu()
     return render_template('menu.html', error=error, menu=data)
 
 
@@ -34,9 +34,12 @@ def show_menu():
 def admin():
     error = None
     print "Inside admin ", request, dir(request)
-    payload = (request.args.get('dish'), request.args.get('category'),
-               request.args.get('description'), request.args.get('price'))
+    payload = {"dish": request.args.get('dish'),
+               "category": request.args.get('category'),
+               "description": request.args.get('description'),
+               "price": request.args.get('price')}
     print payload
+    db.insert_data(payload)
     return render_template('admin.html', error=error)
 
 if __name__ == "__main__":
