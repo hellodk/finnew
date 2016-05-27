@@ -11,22 +11,27 @@
   </head>
 
   <body>
-  This is menu page
-  <table border="1">
+  hotspice
+    <div class="container">
+      <ul>
+    <table border="2">
     <tr>
     <th>Dish</th>
     <th>Category</th>
     <th>Description</th>
     <th>Price</th>
     </tr>
+    {% for n in menu %}  
     <tr>
-    <td>Ramesh Raman</td>
-    <td>5000</td>
+    <td>{{n['dish']}}</td>
+    <td>{{n['category']}}</td>
+    <td>{{n['price']}}</td>
+    <td>{{n['description']}}</td>
     </tr>
-    <tr>
-    <td>Shabbir Hussein</td>
-    <td>7000</td>
-    </tr>
+    {% endfor %}
     </table>
+        
+      </ul>
+    </div>
   </body>
 </html>

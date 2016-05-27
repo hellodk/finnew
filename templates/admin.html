@@ -7,11 +7,15 @@
     
     
     <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Open+Sans'>
-    <link rel="stylesheet" href="css/style.css">    
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+    var x=document.forms[0].elements['id_remarks'].value;
+    if(!x){} else {}
+    </script>
   </head>
 
   <body>
-<p>Admin Page</p>
+<p>Finnew Admin Page</p>
 <form action="admin" method="get" id="form1">
   Dish:<br>
   <input type="text" name="dish">
@@ -25,6 +29,6 @@
   <input type="text" name="price">
 </form>
 
-<button type="submit" form="form1" value="Submit">Submit</button>
+<button type="submit" form="form1" value="Submit" onclick="verify()">Submit</button>
   </body>
 </html>

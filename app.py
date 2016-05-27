@@ -33,13 +33,13 @@ def show_menu():
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
     error = None
-    print "Inside admin ", request, dir(request)
     payload = {"dish": request.args.get('dish'),
                "category": request.args.get('category'),
                "description": request.args.get('description'),
                "price": request.args.get('price')}
-    print payload
-    db.insert_data(payload)
+    li = ["", "None", "null"]
+    if not(payload['dish'] in li):
+        db.insert_data(payload)
     return render_template('admin.html', error=error)
 
 if __name__ == "__main__":

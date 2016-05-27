@@ -29,8 +29,9 @@ def get_menu():
     Scans through mongo db and returns back
     menu to the caller
     '''
+    data = []
     db = get_db_connection(database_name, host, port)
     cursor = db[collection_name].find()
     for values in cursor:
-        print "Menu : ", values
-    return values
+        data.append(values)
+    return data
